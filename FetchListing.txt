@@ -1,0 +1,40 @@
+/*THIS SCRIPT IS USED TO FETCH DATA FROM A FOLDER
+ * AUTHOR: Unachukwu Samuel
+ * DEPARTMENT: IDT
+ * DATE: 8-16-2021
+ * ***/
+
+
+ function listFolderContent() {
+  var foldername = 'YRV';
+  var folderlisting = 'listing of folder' + foldername;
+  
+  var folders = DriveApp.getFoldersByName(foldername)
+  var folder = folders.next();
+  var contents = folder.getFiles();
+  var contents = folder.getFiles();
+  
+  var ss = SpreadsheetApp.create(folderlisting);
+  var sheet = ss.getActiveSheet();
+  sheet.appendRow(['id','name','link','size','date']);
+  
+  var file;
+  var id;
+  var name;
+  var link;
+  var row; 
+  var date;
+
+  var size;
+  while(contents.hasNext()){
+    file = contents.next();
+    name = file.getName();
+    link = file.getUrl();
+    date = file.getDateCreated();
+    size = file.getSize();
+    id = file.getId();
+    sheet.appendRow([id,name, link,size,date]);
+  }
+  
+};
+
