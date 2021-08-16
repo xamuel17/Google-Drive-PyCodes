@@ -16,7 +16,7 @@
   
   var ss = SpreadsheetApp.create(folderlisting);
   var sheet = ss.getActiveSheet();
-  sheet.appendRow(['id','name','link','size','date']);
+  sheet.appendRow(['id','name','link','date']);
   
   var file;
   var id;
@@ -31,9 +31,8 @@
     name = file.getName();
     link = file.getUrl();
     date = file.getDateCreated();
-    size = file.getSize();
     id = file.getId();
-    sheet.appendRow([id,name, link,size,date]);
+    sheet.appendRow([id,name,link,date]);
   }
   
 };
